@@ -3,8 +3,6 @@ from pathlib import Path
 # We require python 3.10, so this is fine.
 from importlib.resources import files
 
-
-
 from aoc_cli_core import BaseInitialiser
 
 from .language import __language__
@@ -20,8 +18,8 @@ class Initialiser(BaseInitialiser):
         self.set_file_content_template()
 
     def set_file_content_template(self):
-        resources = files("aoc_cli_python")
-        self.file_content = (resources / "resources" / "day.py").read_text()
+        resources = files("aoc_cli_go")
+        self.file_content = (resources / "resources" / "main.go").read_text()
 
 
     def initialise(self):
@@ -34,7 +32,7 @@ class Initialiser(BaseInitialiser):
 
     def write_file_templates(self):
         for i in range(1, 26):
-            daily_file: Path = self.base_dir_location / f"{i:02}" / "day.py"
+            daily_file: Path = self.base_dir_location / f"{i:02}" / "main.go"
             daily_file.write_text(self.file_content)
         
 
